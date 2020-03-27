@@ -14,13 +14,25 @@ namespace HireEachOther.Data
         {
         }
 
+        public DbSet<Ad> Ads { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
 
+            // User
             builder.Entity<User>()
                 .ToTable("Users");
+
+
+            // Ad
+            builder.Entity<Ad>()
+                .HasKey(a => a.Id);
+
+            builder.Entity<Ad>()
+                .ToTable("Ads");
+
+
         }
     }
 }
