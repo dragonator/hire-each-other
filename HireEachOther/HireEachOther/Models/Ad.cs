@@ -23,5 +23,11 @@ namespace HireEachOther.Models
         public double Payment { get; set; }
 
         public DateTime StartDate { get; set; }
+
+        public bool IsArchived { get; set; }
+
+        public string UserId { get; set; }
+        public User Owner { get; set; }
+        public ICollection<Applicants> Applicants { get; set; }
     }
 }

@@ -11,5 +11,8 @@ namespace HireEachOther.Models
     {
         [Range(1.0f, 5.0f)]
         public float Rating { get; set; }
+        
+        public ICollection<Ad> OwnedAds { get; set; }
+        public ICollection<Applicants> Applications { get; set; }
     }
 }

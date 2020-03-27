@@ -12,8 +12,10 @@ namespace HireEachOther.Pages
     [Authorize]
     public class CreateAdsModel : PageModel
     {
+
         public Ad Ad { get; set; }
-        public void OnGet()
+
+        public void OnGet(int page)
         {
 
         }

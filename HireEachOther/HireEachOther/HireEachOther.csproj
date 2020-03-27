@@ -5,6 +5,19 @@
     <UserSecretsId>aspnet-HireEachOther-C915B5E5-55FE-486C-80CC-AB46D5205895</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20200327224647_AdsToUsersMigration.cs" />
+    <Compile Remove="Data\Migrations\20200327224647_AdsToUsersMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200327225112_UserIdTypeMigration.cs" />
+    <Compile Remove="Data\Migrations\20200327225112_UserIdTypeMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200327232450_UserUpdateMigration.cs" />
+    <Compile Remove="Data\Migrations\20200327232450_UserUpdateMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200327233648_UserUpdateMigration.cs" />
+    <Compile Remove="Data\Migrations\20200327233648_UserUpdateMigration.Designer.cs" />
+    <Compile Remove="Data\Migrations\20200327234815_UserUpdateMigration.cs" />
+    <Compile Remove="Data\Migrations\20200327234815_UserUpdateMigration.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.2" />
