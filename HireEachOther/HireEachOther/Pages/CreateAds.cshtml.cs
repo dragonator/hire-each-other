@@ -61,7 +61,7 @@ namespace HireEachOther.Pages
                     _adsService.UpdateAdd(Ad);
                     //todo: add success message
 
-                    return Redirect("Redirect to AD DETAILS page");
+                    return Redirect("Index");
                 }
             }
 

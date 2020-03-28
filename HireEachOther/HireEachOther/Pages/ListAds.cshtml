@@ -21,12 +21,17 @@ else
                 Created by
             </span>
         </a>
-        <a class="btn btn-primary" asp-page="UserProfile" asp-route-userId="@ad.UserId">
+        <a class="btn btn-primary" >
             <span>
                 Apply
             </span>
         </a>
-    
+        <a class="btn btn-primary" asp-page="AdProfile" asp-route-adId="@ad.Id">
+            <span>
+                Open ad
+            </span>
+        </a>
+
     }
 
 }

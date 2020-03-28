@@ -1,0 +1,39 @@
+﻿@page
+@model HireEachOther.Pages.AdProfileModel
+@{
+    ViewData["Title"] = "AdProfile";
+}
+
+
+<div>
+    <partial name="_AdSummary" model="@Model.Ad" />
+</div>
+
+@if (Model.Ad.Comments.Count != 0)
+{
+    foreach (var comment in Model.Ad.Comments)
+    {
+        <div>
+            <h5>comment.Owner.UserName</h5>
+        </div>
+        <div>
+            @comment.Comment
+        </div>
+    }
+}
+<form method="post">
+    <input asp-for="Comment.TargetId" class="form-control mb-4" value="@Model.Ad.Id" type="hidden">
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <label asp-for="Comment.Comment"></label>
+                <textarea asp-for="Comment.Comment" class="form-control mb-4"></textarea>
+                <span asp-validation-for="Comment.Comment" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
+    </div>
+</form>
+
