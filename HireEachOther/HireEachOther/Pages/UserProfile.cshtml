@@ -4,6 +4,7 @@
     ViewData["Title"] = "UserProfile";
 }
 
+  
 <h1>@Model.SelectedUser.UserName</h1>
 
 <div>
@@ -15,15 +16,12 @@
 
 @if (Model.SelectedUser.Comments.Count != 0)
 {
-    foreach (var comment in Model.SelectedUser.Comments)
-    {
-        <div>
-            <h5>@comment.Owner.UserName</h5>
-        </div>
-        <div>
-            @comment.Comment
-        </div>
-    }
+
+        @foreach (var comment in Model.SelectedUser.Comments)
+        {
+            <partial name="_UserCommentSummary" model="comment" />
+        }
+ 
 }
 <form method="post">
     <input asp-for="Comment.TargetId" class="form-control mb-4" value="@Model.SelectedUser.Id" type="hidden">
@@ -33,7 +31,7 @@
                 <label asp-for="Comment.Comment"></label>
                 <textarea asp-for="Comment.Comment" class="form-control mb-4"></textarea>
                 <span asp-validation-for="Comment.Comment" class="text-danger"></span>
-            </div>  
+            </div>
         </div>
     </div>
     <div class="row">

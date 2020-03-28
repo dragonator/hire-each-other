@@ -10,13 +10,13 @@
 </div>
 @if (!(bool)ViewData["AlreadyApplied"])
 {
-<form asp-page-handler="Apply" asp-route-adId="@Model.Ad.Id" method="post">
-    <button class="btn btn-info btn-block my-4" type="submit">Apply</button>
-</form>
+    <form asp-page-handler="Apply" asp-route-adId="@Model.Ad.Id" method="post">
+        <button class="btn btn-info btn-block my-4" type="submit">Apply</button>
+    </form>
 }
 else
 {
-    <a class="btn btn-secondary btn-lg disabled" role="button" href="#" aria-disabled="true" >
+    <a class="btn btn-secondary btn-lg disabled" role="button" href="#" aria-disabled="true">
         <span>
             Apply
         </span>
@@ -28,12 +28,7 @@ else
 {
     foreach (var comment in Model.Ad.Comments)
     {
-        <div>
-            <h5>@comment.Owner.UserName</h5>
-        </div>
-        <div>
-            @comment.Comment
-        </div>
+        <partial name="_AdCommentSummary" model="comment" />
     }
 }
 <form method="post">
