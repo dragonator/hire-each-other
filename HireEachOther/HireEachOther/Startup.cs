@@ -44,7 +44,8 @@ namespace HireEachOther
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddScoped<IAdsService, AdsService>();
-
+            services.AddScoped<ICommentsService, CommentsService>();
+            
             services.AddRazorPages();
         }
 

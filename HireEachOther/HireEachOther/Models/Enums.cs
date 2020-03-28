@@ -7,8 +7,8 @@ namespace HireEachOther.Models
 {
     public enum ApplicationStatus
     {
-        Rejected,
         Pending,
+        Rejected,
         Accepted
     }
 
@@ -22,10 +22,3 @@ namespace HireEachOther.Models
     }
 }
 
-public enum AdType
-{
-    Courier,
-    Medical,
-    Law,
-    Heavy
-}

@@ -1,6 +1,7 @@
 ﻿using HireEachOther.Data;
 using HireEachOther.Models;
 using HireEachOther.Services.Contracts;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,19 +19,23 @@ namespace HireEachOther.Services
         }
         public Ad GetAdById(Guid id)
         {
-            var result = _dbContext.Ads.FirstOrDefault(a => a.Id == id);
+            var result = _dbContext.Ads
+                .Include(a => a.Owner)
+                .Include(a => a.Comments)
+                .ThenInclude(c => c.Owner)
+                .FirstOrDefault(a => a.Id == id);
             return result;
         }
 
         public List<Ad> GetAdsByPage(int index)
         {
-            var result = _dbContext.Ads.Skip(10 * (index - 1)).Take(10).ToList();
+            var result = _dbContext.Ads.Skip(10 * (index - 1)).Take(10).Include(a => a.Comments).ToList();
             return result;
         }
 
         public List<Ad> GetAdsByUserId(string id)
         {
-            var result = _dbContext.Ads.Where(a => a.UserId == id).ToList();
+            var result = _dbContext.Ads.Where(a => a.UserId == id).Include(a => a.Comments).ToList();
             return result;
         }
 
