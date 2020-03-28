@@ -9,5 +9,7 @@ namespace HireEachOther.Services.Contracts
     public interface ICommentsService
     {
         void AddCommentToAd(AdComment comment);
+        void AddCommentToUser(UserComment comment);
+        List<UserComment> GetUserComments(string userId);
     }
 }

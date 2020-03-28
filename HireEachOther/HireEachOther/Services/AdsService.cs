@@ -19,7 +19,10 @@ namespace HireEachOther.Services
         }
         public Ad GetAdById(Guid id)
         {
-            var result = _dbContext.Ads.Include(a => a.Comments).FirstOrDefault(a => a.Id == id);
+            var result = _dbContext.Ads
+                .Include(a => a.Comments)
+                .ThenInclude(c => c.Owner)
+                .FirstOrDefault(a => a.Id == id);
             return result;
         }
 

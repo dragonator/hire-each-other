@@ -17,7 +17,7 @@ namespace HireEachOther.Pages
     {
         private readonly IAdsService _adsService;
         private readonly UserManager<User> _userService;
-        private readonly IHttpContextAccessor _httpContextr;
+        private readonly IHttpContextAccessor _httpContext;
 
 
         public CreateAdsModel(IAdsService adsService,
@@ -26,7 +26,7 @@ namespace HireEachOther.Pages
         {
             _adsService = adsService;
             _userService = userManager;
-            _httpContextr = httpContextAccessor;
+            _httpContext = httpContextAccessor;
         }
 
         [BindProperty]
@@ -49,7 +49,7 @@ namespace HireEachOther.Pages
                 if (dbAd == null)  // create new
                 {
                     //get current user
-                    var identityClaim = _httpContextr.HttpContext.User;
+                    var identityClaim = _httpContext.HttpContext.User;
                     var user = _userService.GetUserAsync(identityClaim).Result;
                     Ad.Owner = user;
                     var success = _adsService.CreateAdAsync(Ad);

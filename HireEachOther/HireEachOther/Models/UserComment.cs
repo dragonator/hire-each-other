@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace HireEachOther.Models
 
         public Guid Id { get; set; }
 
+        [Required]
+        [StringLength(500, MinimumLength = 1)]
         public string Comment { get; set; }
 
 
