@@ -40,7 +40,7 @@ namespace HireEachOther.Pages
             AdsToDisplay = _adsService.GetAdsByPage(PageIndex);
             if (AdsToDisplay.Count == 0)
             {
-                PageIndex--;
+                PageIndex = PageIndex > 1 ? --PageIndex : 1;
                 AdsToDisplay = _adsService.GetAdsByPage(PageIndex);
             }
         }
