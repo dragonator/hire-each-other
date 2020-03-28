@@ -1,60 +1,71 @@
 ﻿@page
+@using HireEachOther.Models
 @model HireEachOther.Pages.CreateAdsModel
 @{
     ViewData["Title"] = "CreateAds";
 }
 
 
-<form class="border border-light p-5" method="post">
+    <form class="border border-light p-5" method="post">
 
-    <p class="h4 mb-4 text-center">@TempData["RequestType"]</p>
+        <p class="h4 mb-4 text-center">@TempData["RequestType"]</p>
 
-    <input asp-for="Ad.Id" class="form-control mb-4" type="hidden">
+        <input asp-for="Ad.Id" class="form-control mb-4" type="hidden">
 
-    <div class="form-group">
-        <label asp-for="Ad.Title"></label>
-        <input asp-for="Ad.Title" class="form-control mb-4" placeholder="Title">
-    </div>
+        <div class="form-group">
+            <label asp-for="Ad.Title"></label>
+            <input asp-for="Ad.Title" class="form-control mb-4" placeholder="Title">
+            <span asp-validation-for="Ad.Title" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Ad.Description"></label>
-        <input asp-for="Ad.Description" class="form-control mb-4" placeholder="Description">
-    </div>
+        <div class="form-group">
+            <label asp-for="Ad.Description"></label>
+            <input asp-for="Ad.Description" class="form-control mb-4" placeholder="Description">
+            <span asp-validation-for="Ad.Description" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Ad.PeopleNeeded"></label>
-        <input asp-for="Ad.PeopleNeeded" class="form-control mb-4" placeholder="Address">
-    </div>
+        <div class="form-group">
+            <label asp-for="Ad.PeopleNeeded"></label>
+            <input asp-for="Ad.PeopleNeeded" class="form-control mb-4" placeholder="Address">
+            <span asp-validation-for="Ad.PeopleNeeded" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Ad.Duration"></label>
-        <input asp-for="Ad.Duration" class="form-control mb-4" placeholder="Address">
-    </div>
+        <div class="form-group">
+            <label asp-for="Ad.Duration"></label>
+            <input asp-for="Ad.Duration" class="form-control mb-4" placeholder="Address">
+            <span asp-validation-for="Ad.Duration" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Ad.Address"></label>
-        <input asp-for="Ad.Address" class="form-control mb-4" placeholder="Address">
-    </div>
+        <div class="form-group">
+            <label asp-for="Ad.Address"></label>
+            <input asp-for="Ad.Address" class="form-control mb-4" placeholder="Address">
+            <span asp-validation-for="Ad.Address" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Ad.StartDate"></label>
-        <input asp-for="Ad.StartDate" class="form-control mb-4" placeholder="Date">
-    </div>
+        <div class="form-group">
+            <label asp-for="Ad.StartDate"></label>
+            <input asp-for="Ad.StartDate" class="form-control mb-4" placeholder="Date">
+            <span asp-validation-for="Ad.StartDate" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label asp-for="Ad.Payment"></label>
-        <input asp-for="Ad.Payment" class="form-control mb-4" placeholder="Payment">
-    </div>
+        <div class="form-group">
+            <label asp-for="Ad.Payment"></label>
+            <input asp-for="Ad.Payment" class="form-control mb-4" placeholder="Payment">
+            <span asp-validation-for="Ad.Payment" class="text-danger"></span>
+        </div>
 
-    <div class="form-group">
-        <label>Duration</label>
-        <input class="form-control mb-4" placeholder="Text input">
-    </div>
+        <label asp-for="Ad.Type" class="control-label"></label>
+        <select asp-for="Ad.Type"
+                class="form-control"
+                asp-items="Html.GetEnumSelectList<AdType>()">
+            <option>Select type ...</option>
+        </select>
+        <span asp-validation-for="Ad.Type" class="text-danger"></span>
 
 
 
-    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
-</form>
+        <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
+    </form>
 
 
 
