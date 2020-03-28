@@ -21,3 +21,11 @@ namespace HireEachOther.Models
         Heavy
     }
 }
+
+public enum AdType
+{
+    Courier,
+    Medical,
+    Law,
+    Heavy
+}

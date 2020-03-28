@@ -4,58 +4,94 @@
     ViewData["Title"] = "CreateAds";
 }
 
+<div class="container mt-5">
+  <form class="border border-light p-5" method="post">
+    <p class="h4 mb-4 text-center">Create new Ad</p>
 
-<form class="border border-light p-5" method="post">
-
-    <p class="h4 mb-4 text-center">@TempData["RequestType"]</p>
-
-    <input asp-for="Ad.Id" class="form-control mb-4" type="hidden">
-
-    <div class="form-group">
-        <label asp-for="Ad.Title"></label>
-        <input asp-for="Ad.Title" class="form-control mb-4" placeholder="Title">
+    <!--Grid row start-->
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+           <label asp-for="Ad.Title">Title</label>
+           <input asp-for="Ad.Title" class="form-control mb-4">
+        </div>
+      </div>
     </div>
+    <!--Grid row end-->
 
-    <div class="form-group">
-        <label asp-for="Ad.Description"></label>
-        <input asp-for="Ad.Description" class="form-control mb-4" placeholder="Description">
+    <!--Grid row start-->
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+            <label asp-for="Ad.PeopleNeeded">Number of people</label>
+            <input asp-for="Ad.PeopleNeeded" class="form-control mb-4">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+            <label asp-for="Ad.Address">Location</label>
+            <select class="browser-default custom-select">
+              <option value="1">Burgas</option>
+              <option value="2">Plovdiv</option>
+              <option value="3">Sofia</option>
+            </select>
+        </div>
+      </div>
     </div>
+    <!--Grid row end-->
 
-    <div class="form-group">
-        <label asp-for="Ad.PeopleNeeded"></label>
-        <input asp-for="Ad.PeopleNeeded" class="form-control mb-4" placeholder="Address">
+    <!--Grid row start-->
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label asp-for="Ad.Duration">Duration (hours)</label>
+          <input asp-for="Ad.Duration" class="form-control mb-4">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+          <label asp-for="Ad.StartDate">Date</label>
+          <input asp-for="Ad.StartDate" type="text" id="date" class="form-control mb-4">
+        </div>
+      </div>
     </div>
+    <!--Grid row end-->
 
-    <div class="form-group">
-        <label asp-for="Ad.Duration"></label>
-        <input asp-for="Ad.Duration" class="form-control mb-4" placeholder="Address">
+    <!--Grid row start-->
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+            <label asp-for="Ad.Payment">Payment</label>
+            <input asp-for="Ad.Payment" class="form-control mb-4">
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="form-group">
+            <label asp-for="Ad.Type">Type of work</label>
+            <input asp-for="Ad.Type" class="form-control mb-4">
+        </div>
+      </div>
     </div>
+    <!--Grid row end-->
 
-    <div class="form-group">
-        <label asp-for="Ad.Address"></label>
-        <input asp-for="Ad.Address" class="form-control mb-4" placeholder="Address">
+    <!--Grid row start-->
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label asp-for="Ad.Description">Description</label>
+          <textarea asp-for="Ad.Description" class="form-control mb-4"></textarea>
+        </div>
+      </div>
     </div>
+    <!--Grid row end-->
 
-    <div class="form-group">
-        <label asp-for="Ad.StartDate"></label>
-        <input asp-for="Ad.StartDate" class="form-control mb-4" placeholder="Date">
+    <!--Grid row start-->
+    <div class="row">
+      <button class="btn btn-info btn-block my-4" type="submit">Create</button>
     </div>
-
-    <div class="form-group">
-        <label asp-for="Ad.Payment"></label>
-        <input asp-for="Ad.Payment" class="form-control mb-4" placeholder="Payment">
-    </div>
-
-    <div class="form-group">
-        <label>Duration</label>
-        <input class="form-control mb-4" placeholder="Text input">
-    </div>
-
-
-
-    <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
-</form>
-
-
-
-
+    <!--Grid row end-->
+  </form>
+</div>
