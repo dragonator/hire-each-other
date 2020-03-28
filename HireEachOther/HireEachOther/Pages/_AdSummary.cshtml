@@ -11,8 +11,8 @@
     </div>
     <div class="card-body">
       <span class="card-text">$ @Model.Payment / @Model.Duration</span>
-      <a href="#" class="btn btn-primary btn-sm">Author</a>
-      <a href="#" class="btn btn-primary btn-sm">Details</a>
+      <a asp-page="UserProfile" asp-route-userId="@Model.UserId" class="btn btn-primary btn-sm">Author</a>
+      <a asp-page="AdProfile" asp-route-adId="@Model.Id" class="btn btn-primary btn-sm">Details</a>
     </div>
   </div>
 </div>

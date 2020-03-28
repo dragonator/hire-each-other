@@ -29,7 +29,10 @@ namespace HireEachOther.Services
 
         public List<Ad> GetAdsByPage(int index)
         {
-            var result = _dbContext.Ads.Skip(10 * (index - 1)).Take(10).Include(a => a.Comments).ToList();
+            var result = _dbContext.Ads.Skip(10 * (index - 1))
+                .Take(10)
+                .Include(a => a.Comments)
+                .ToList();
             return result;
         }
 

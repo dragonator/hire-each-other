@@ -1,0 +1,14 @@
+﻿
+@using HireEachOther.Models
+@model UserComment
+
+<div class="grid-item col-md-6 mb-4">
+    <div class="card">
+        <div class="card-header">
+            [@Model.DateAdded] <b>@Model.Owner.UserName</b>
+        </div>
+        <div class="card-body">
+            <p>@Model.Comment</p>
+        </div>
+    </div>
+</div>
