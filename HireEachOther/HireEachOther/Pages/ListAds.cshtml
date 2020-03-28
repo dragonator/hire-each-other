@@ -4,40 +4,48 @@
     ViewData["Title"] = "ListAds";
 }
 
-<h1>Open ads</h1>
+<center><h1>Open ads</h1></center>
 
 @if (Model.AdsToDisplay.Count == 0)
 {
-    <div>No ads currently created</div>
+    <div class="badge-info">
+        <h3>No ads currently created</h3>
+    </div>
 }
 else
 {
 
-    @foreach (var ad in Model.AdsToDisplay)
-    {
-        <partial name="_AdSummary" model="ad" />
-        <a class="btn btn-primary" asp-page="UserProfile" asp-route-userId="@ad.UserId">
-            <span>
-                Created by
-            </span>
-        </a>
-
-        <a class="btn btn-primary" asp-page="AdProfile" asp-route-adId="@ad.Id">
-            <span>
-               Details
-            </span>
-        </a>
-
-    }
-
+    <div class="container">
+      <div class="grid">
+        <div class="grid-sizer col-md-3"></div>
+        @foreach (var ad in Model.AdsToDisplay)
+        {
+            <partial name="_AdSummary" model="ad" />
+        }
+      </div>
+    </div>
 }
-<div>
-    <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="false" asp-route-PageIndex="@Model.PageIndex">Previous</a>
-    <span>@Model.PageIndex</span>
-    <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="true" asp-route-PageIndex="@Model.PageIndex">Next</a>
-</div>
 
+<center>
+  <div>
+    <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="false" asp-route-PageIndex="@Model.PageIndex"> < </a>
+    <span class="quantity">@Model.PageIndex</span>
+    <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="true" asp-route-PageIndex="@Model.PageIndex"> > </a>
+  </div>
+</center>
 
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.grid').masonry({
+                itemSelector: '.grid-item',
+                columnWidth: '.grid-sizer',
+                percentPosition: true
+            });
+        });
+    </script>
+}
 
 
 
