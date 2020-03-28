@@ -4,30 +4,53 @@
     ViewData["Title"] = "CreateAds";
 }
 
-
+    <label asp-for="Ad.Title" />
     <form class="border border-light p-5" method="post">
 
         <p class="h4 mb-4 text-center">Create new Ad</p>
 
-        <label asp-for="Ad.Title" class="active" />
-        <input asp-for="Ad.Title" class="form-control mb-4" placeholder="Title">
+        <div class="form-group">
+            <label asp-for="Ad.Title"></label>
+            <input asp-for="Ad.Title" class="form-control mb-4" placeholder="Title">
+        </div>
 
-        <label asp-for="Ad.Address" />
-        <input asp-for="Ad.Address" class="form-control mb-4" placeholder="Address">
+        <div class="form-group">
+            <label asp-for="Ad.Description"></label>
+            <input asp-for="Ad.Description" class="form-control mb-4" placeholder="Description">
+        </div>
 
-        <label asp-for="Ad.StartDate" />
-        <input asp-for="Ad.StartDate" class="form-control mb-4" placeholder="Date">
+        <div class="form-group">
+            <label asp-for="Ad.PeopleNeeded"></label>
+            <input asp-for="Ad.PeopleNeeded" class="form-control mb-4" placeholder="Address">
+        </div>
 
-        <label asp-for="Ad.Payment" />
-        <input asp-for="Ad.Payment" class="form-control mb-4" placeholder="Payment">
+        <div class="form-group">
+            <label asp-for="Ad.Duration"></label>
+            <input asp-for="Ad.Duration" class="form-control mb-4" placeholder="Address">
+        </div>
 
-        <label>Duration</label>
-        <input class="form-control mb-4" placeholder="Text input">
+        <div class="form-group">
+            <label asp-for="Ad.Address"></label>
+            <input asp-for="Ad.Address" class="form-control mb-4" placeholder="Address">
+        </div>
 
-        <label asp-for="Ad.Description" />
-        <input asp-for="Ad.Description" class="form-control mb-4" placeholder="Description">
+        <div class="form-group">
+            <label asp-for="Ad.StartDate"></label>
+            <input asp-for="Ad.StartDate" class="form-control mb-4" placeholder="Date">
+        </div>
 
-      
+        <div class="form-group">
+            <label asp-for="Ad.Payment"></label>
+            <input asp-for="Ad.Payment" class="form-control mb-4" placeholder="Payment">
+        </div>
+
+        <div class="form-group">
+            <label>Duration</label>
+            <input class="form-control mb-4" placeholder="Text input">
+        </div>
+
+
+
         <button class="btn btn-info btn-block my-4" type="submit">Sign in</button>
     </form>
 
