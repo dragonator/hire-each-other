@@ -15,17 +15,18 @@ namespace HireEachOther.Models
             Applicants = new HashSet<Applicants>();
             Comments = new HashSet<AdComment>();
             IsArchived = false;
+            StartDate = DateTime.Now;
         }
 
         public Guid Id { get; set; }
 
         [Required]
-        [StringLength(50, MinimumLength = 3)]
+        [StringLength(100, MinimumLength = 3)]
         [DisplayName("Give a nice title")]
         public string Title { get; set; }
 
         [Required]
-        [StringLength(300, MinimumLength = 10)]
+        [StringLength(1000, MinimumLength = 10)]
         [DisplayName("Describe shortly")]
         public string Description { get; set; }
 
