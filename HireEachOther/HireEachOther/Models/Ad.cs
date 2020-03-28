@@ -9,6 +9,14 @@ namespace HireEachOther.Models
 {
     public class Ad
     {
+        public Ad()
+        {
+            Id = Guid.NewGuid();
+            Applicants = new HashSet<Applicants>();
+            Comments = new HashSet<AdComment>();
+            IsArchived = false;
+        }
+
         public Guid Id { get; set; }
 
         [Required]
@@ -41,9 +49,21 @@ namespace HireEachOther.Models
         public string Address { get; set; }
 
         public bool IsArchived { get; set; }
-
         public string UserId { get; set; }
         public User Owner { get; set; }
         public ICollection<Applicants> Applicants { get; set; }
+        public ICollection<AdComment> Comments { get; set; }
+
+
+        public void Copy(Ad update)
+        {
+            this.Title = update.Title;
+            this.Description = update.Description;
+            this.Payment = update.Payment;
+            this.PeopleNeeded = update.PeopleNeeded;
+            this.Duration = update.Duration;
+            this.StartDate = update.StartDate;
+            this.Address = update.Address;
+        }
     }
 }

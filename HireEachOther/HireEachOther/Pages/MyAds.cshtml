@@ -1,0 +1,24 @@
+﻿@page
+@model HireEachOther.Pages.MyAdsModel
+@{
+    ViewData["Title"] = "MyAds";
+}
+
+<h1>My ads</h1>
+
+@if (Model.AdsCollection.Count == 0)
+{
+    <div class="badge-info">
+        <h3>Currently you have no ads</h3>
+    </div>
+}
+else
+{
+    @foreach (var ad in Model.AdsCollection)
+    {
+        <partial name="_AdSummary" model="ad" />
+    }
+}
+
+
+

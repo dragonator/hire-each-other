@@ -15,6 +15,8 @@ namespace HireEachOther.Data
         }
 
         public DbSet<Ad> Ads { get; set; }
+        public DbSet<UserComment> UserComments { get; set; }
+        public DbSet<AdComment> AdComments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -32,7 +34,24 @@ namespace HireEachOther.Data
             builder.Entity<User>()
                 .HasMany(u => u.Applications)
                 .WithOne(ap => ap.User);
+            // Comments targeted user
+            builder.Entity<User>()
+                .HasMany(u => u.Comments)
+                .WithOne(c => c.Target)
+                .HasForeignKey("TargetId");
 
+
+            // UserComments made by User
+            builder.Entity<UserComment>()
+                .HasOne(u => u.Owner)
+                .WithMany()
+                .HasForeignKey("UserId");
+
+            // AdComments made by User
+            builder.Entity<AdComment>()
+                .HasOne(u => u.Owner)
+                .WithMany()
+                .HasForeignKey("UserId");
 
             // Ads
             builder.Entity<Ad>()
@@ -42,19 +61,22 @@ namespace HireEachOther.Data
                 .HasOne(a => a.Owner)
                 .WithMany(o => o.OwnedAds)
                 .HasForeignKey("UserId");
-                
             // Applicants
             builder.Entity<Ad>()
                 .HasMany(a => a.Applicants)
                 .WithOne(ap => ap.Ad);
-            // table name 
+            // Table name Ads
             builder.Entity<Ad>()
                 .ToTable("Ads");
+            // Ad comments
+            builder.Entity<Ad>()
+                .HasMany(a => a.Comments)
+                .WithOne(ac => ac.Target)
+                .HasForeignKey("TargetId");
 
 
             builder.Entity<Applicants>()
                    .HasKey(a => new { a.UserId, a.AdId });
-       
         }
     }
 }

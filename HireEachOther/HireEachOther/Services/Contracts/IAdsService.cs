@@ -8,8 +8,10 @@ namespace HireEachOther.Services.Contracts
 {
     public interface IAdsService
     {
-        Ad GetAdById(string id);
-        bool CreateAd(Ad ad);
+        Ad GetAdById(Guid id);
+        List<Ad> GetAdsByUserId(string id);
+        void UpdateAdd(Ad ad);
+        bool CreateAdAsync(Ad ad);
 
     }
 }

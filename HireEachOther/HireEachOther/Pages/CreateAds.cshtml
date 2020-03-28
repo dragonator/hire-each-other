@@ -4,10 +4,12 @@
     ViewData["Title"] = "CreateAds";
 }
 
-    <label asp-for="Ad.Title" />
+
     <form class="border border-light p-5" method="post">
 
-        <p class="h4 mb-4 text-center">Create new Ad</p>
+        <p class="h4 mb-4 text-center">@TempData["RequestType"]</p>
+
+        <input asp-for="Ad.Id" class="form-control mb-4" type="hidden">
 
         <div class="form-group">
             <label asp-for="Ad.Title"></label>

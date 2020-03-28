@@ -1,0 +1,15 @@
+﻿@using HireEachOther.Models
+@model Ad
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>@Model.Title</h3>
+        </div>
+        <div class="panel-body">
+            <span>Description: @Model.Description</span>
+            <span>Address: @Model.Address</span>
+            <span>Date and time: @Model.StartDate</span>
+            <span>Payment: @Model.Payment</span>
+            <span>People needed: @Model.PeopleNeeded</span>
+        </div>
+    </div>

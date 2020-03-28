@@ -21,28 +21,52 @@ namespace HireEachOther.Pages
 
 
         public CreateAdsModel(IAdsService adsService,
-            IHttpContextAccessor httpContextAccessor, 
+            IHttpContextAccessor httpContextAccessor,
             UserManager<User> userManager)
         {
             _adsService = adsService;
             _userService = userManager;
             _httpContextr = httpContextAccessor;
-            //var userId = httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            //var userIddd = httpContextAccessor.HttpContext.User/*.FindFirst(ClaimTypes.NameIdentifier).Value*/;
-            //var us = userManager.GetUserAsync(httpContextAccessor.HttpContext.User);
-
         }
+
         [BindProperty]
         public Ad Ad { get; set; }
 
         public void OnGet()
         {
-            
+            Ad = new Ad();
+            if (!TempData.ContainsKey("RequestType"))
+            {
+                TempData["RequestType"] = "Create new ad";
+            }
         }
 
-        public void OnPost()
+        public IActionResult OnPost()
         {
-            _adsService.CreateAd(Ad);
+            if (ModelState.IsValid)
+            {
+                var dbAd = _adsService.GetAdById(Ad.Id);
+                if (dbAd == null)  // create new
+                {
+                    //get current user
+                    var identityClaim = _httpContextr.HttpContext.User;
+                    var user = _userService.GetUserAsync(identityClaim).Result;
+                    Ad.Owner = user;
+                    var success = _adsService.CreateAdAsync(Ad);
+                    return Redirect("MyAds");
+                    //todo: add success message
+                }
+                else // update
+                {
+                    _adsService.UpdateAdd(Ad);
+                    //todo: add success message
+
+                    return Redirect("Redirect to AD DETAILS page");
+                }
+            }
+
+            return Page();
+
         }
     }
 }
