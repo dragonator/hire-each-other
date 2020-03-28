@@ -17,6 +17,7 @@ namespace HireEachOther.Data
         public DbSet<Ad> Ads { get; set; }
         public DbSet<UserComment> UserComments { get; set; }
         public DbSet<AdComment> AdComments { get; set; }
+        public DbSet<Applicants> Applicants { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

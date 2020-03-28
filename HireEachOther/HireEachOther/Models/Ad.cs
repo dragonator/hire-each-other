@@ -44,6 +44,7 @@ namespace HireEachOther.Models
         [DisplayName("When")]
         public DateTime StartDate { get; set; }
 
+        [Required]
         [DisplayName("Where")]
         [StringLength(100, MinimumLength = 10)]
         public string Address { get; set; }

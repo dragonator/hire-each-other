@@ -20,7 +20,6 @@ namespace HireEachOther.Pages
         [BindProperty(SupportsGet = true)]
         public int PageIndex { get; set; }
         public List<Ad> AdsToDisplay { get; set; }
-        
 
         public void OnGet(bool? isNext = null)
         {
