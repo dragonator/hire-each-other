@@ -4,7 +4,7 @@
     ViewData["Title"] = "MyAds";
 }
 
-<h1>My ads</h1>
+<center><h1>My ads</h1></center>
 
 @if (Model.AdsCollection.Count == 0)
 {
@@ -14,14 +14,26 @@
 }
 else
 {
-    @foreach (var ad in Model.AdsCollection)
-    {
-        <partial name="_AdSummary" model="ad" />
-        <button class="btn btn-info btn-block my-4" style="width:100px">Edit</button>
-        <button class="btn btn-info btn-block my-4" style="width:100px">Details</button>
-        <button class="btn btn-info btn-block my-4" style="width:100px">Archive</button>
-    }
+    <div class="container">
+      <div class="grid">
+        <div class="grid-sizer col-md-3"></div>
+        @foreach (var ad in Model.AdsCollection)
+        {
+            <partial name="_AdSummary" model="ad" />
+        }
+      </div>
+    </div>
 }
 
-
-
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.grid').masonry({
+                itemSelector: '.grid-item',
+                columnWidth: '.grid-sizer',
+                percentPosition: true
+            });
+        });
+    </script>
+}

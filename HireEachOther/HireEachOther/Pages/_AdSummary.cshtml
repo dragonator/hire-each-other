@@ -1,16 +1,18 @@
 ﻿@using HireEachOther.Models
 @model Ad
 
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3>@Model.Title</h3>
-        </div>
-        <div class="panel-body">
-            <span>Description: @Model.Description</span>
-            <span>Address: @Model.Address</span>
-            <span>Date and time: @Model.StartDate</span>
-            <span>Payment: @Model.Payment</span>
-            <span>People needed: @Model.PeopleNeeded</span>
-        </div>
-
+<div class="grid-item col-md-6 mb-4">
+  <div class="card">
+    <div class="card-header">
+      @Model.Title
     </div>
+    <div class="card-body">
+      <p>@Model.Description</p>
+    </div>
+    <div class="card-body">
+      <span class="card-text">$ @Model.Payment / @Model.Duration</span>
+      <a href="#" class="btn btn-primary btn-sm">Author</a>
+      <a href="#" class="btn btn-primary btn-sm">Details</a>
+    </div>
+  </div>
+</div>
