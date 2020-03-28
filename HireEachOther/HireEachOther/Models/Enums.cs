@@ -11,4 +11,13 @@ namespace HireEachOther.Models
         Pending,
         Accepted
     }
+
+    public enum AdType
+    {
+        None,
+        Courier,
+        Medical,
+        Law,
+        Heavy
+    }
 }

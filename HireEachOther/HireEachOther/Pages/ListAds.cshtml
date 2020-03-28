@@ -1,0 +1,16 @@
+﻿@page
+@model HireEachOther.Pages.ListAdsModel
+@{
+    ViewData["Title"] = "ListAds";
+}
+
+<h1>ListAds</h1>
+
+@foreach (var ad in Model.AdsToDisplay)
+{
+    <partial name="_AdSummary" model="ad" />
+}
+
+<a class="btn btn-info btn-block my-4" asp-page="ListAds" asp-route-isNext="false" asp-route-PageIndex="@Model.PageIndex">Previous</a>
+<span>@Model.PageIndex</span>
+<a class="btn btn-info btn-block my-4" asp-page="ListAds" asp-route-isNext="true" asp-route-PageIndex="@Model.PageIndex">Next</a>

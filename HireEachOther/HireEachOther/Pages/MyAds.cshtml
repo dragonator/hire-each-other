@@ -17,6 +17,9 @@ else
     @foreach (var ad in Model.AdsCollection)
     {
         <partial name="_AdSummary" model="ad" />
+        <button class="btn btn-info btn-block my-4" style="width:100px">Edit</button>
+        <button class="btn btn-info btn-block my-4" style="width:100px">Details</button>
+        <button class="btn btn-info btn-block my-4" style="width:100px">Archive</button>
     }
 }
 

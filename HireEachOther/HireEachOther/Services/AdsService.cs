@@ -22,6 +22,12 @@ namespace HireEachOther.Services
             return result;
         }
 
+        public List<Ad> GetAdsByPage(int index)
+        {
+            var result = _dbContext.Ads.Skip(10 * (index - 1)).Take(10).ToList();
+            return result;
+        }
+
         public List<Ad> GetAdsByUserId(string id)
         {
             var result = _dbContext.Ads.Where(a => a.UserId == id).ToList();

@@ -47,10 +47,11 @@ namespace HireEachOther.Models
         [DisplayName("Where")]
         [StringLength(100, MinimumLength = 10)]
         public string Address { get; set; }
-
         public bool IsArchived { get; set; }
         public string UserId { get; set; }
         public User Owner { get; set; }
+
+        public AdType Type { get;set; }
         public ICollection<Applicants> Applicants { get; set; }
         public ICollection<AdComment> Comments { get; set; }
 

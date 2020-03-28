@@ -12,6 +12,6 @@ namespace HireEachOther.Services.Contracts
         List<Ad> GetAdsByUserId(string id);
         void UpdateAdd(Ad ad);
         bool CreateAdAsync(Ad ad);
-
+        List<Ad> GetAdsByPage(int index);
     }
 }
