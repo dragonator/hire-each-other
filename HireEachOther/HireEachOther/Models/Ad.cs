@@ -24,6 +24,9 @@ namespace HireEachOther.Models
 
         public DateTime StartDate { get; set; }
 
+        [StringLength(100, MinimumLength = 10)]
+        public string Address { get; set; }
+
         public bool IsArchived { get; set; }
 
         public string UserId { get; set; }

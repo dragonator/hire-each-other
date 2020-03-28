@@ -13,6 +13,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using HireEachOther.Models;
+using HireEachOther.Services.Contracts;
+using HireEachOther.Services;
 
 namespace HireEachOther
 {
@@ -40,6 +42,9 @@ namespace HireEachOther
                 options.Password.RequireNonAlphanumeric = false;
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddScoped<IAdsService, AdsService>();
+
             services.AddRazorPages();
         }
 
