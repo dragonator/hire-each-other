@@ -4,13 +4,46 @@
     ViewData["Title"] = "ListAds";
 }
 
-<h1>ListAds</h1>
+<h1>Open ads</h1>
+
+@if (Model.AdsToDisplay.Count == 0)
+{
+    <div>No ads currently created</div>
+}
+else
+{
+
 
 @foreach (var ad in Model.AdsToDisplay)
 {
     <partial name="_AdSummary" model="ad" />
+    <a class="btn btn-primary" asp-page="UserProfile" asp-route-userId="@ad.UserId">
+        <span>
+            Created by
+        </span>
+    </a>
+    <a class="btn btn-primary" asp-page="UserProfile" asp-route-userId="@ad.UserId">
+        <span>
+            Apply
+        </span>
+    </a>
+
 }
 
-<a class="btn btn-info btn-block my-4" asp-page="ListAds" asp-route-isNext="false" asp-route-PageIndex="@Model.PageIndex">Previous</a>
-<span>@Model.PageIndex</span>
-<a class="btn btn-info btn-block my-4" asp-page="ListAds" asp-route-isNext="true" asp-route-PageIndex="@Model.PageIndex">Next</a>
+
+<div>
+    <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="false" asp-route-PageIndex="@Model.PageIndex">Previous</a>
+    <span>@Model.PageIndex</span>
+    <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="true" asp-route-PageIndex="@Model.PageIndex">Next</a>
+</div>
+}
+
+
+
+
+
+
+
+
+
+
