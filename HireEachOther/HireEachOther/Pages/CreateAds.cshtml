@@ -32,9 +32,10 @@
         <div class="form-group">
             <label asp-for="Ad.Address">Location</label>
             <select class="browser-default custom-select">
-              <option value="1">Burgas</option>
-              <option value="2">Plovdiv</option>
-              <option value="3">Sofia</option>
+              <option selected disabled hidden></option>
+              <option value="Burgas">Burgas</option>
+              <option value="Plovdiv">Plovdiv</option>
+              <option value="Sofia">Sofia</option>
             </select>
         </div>
       </div>
@@ -71,7 +72,8 @@
       <div class="col">
         <div class="form-group">
             <label asp-for="Ad.Type">Type of work</label>
-            <input asp-for="Ad.Type" class="form-control mb-4">
+            <select asp-for="Ad.Type" class="form-control" asp-items="Html.GetEnumSelectList<AdType>()">
+            </select>
         </div>
       </div>
     </div>
