@@ -10,7 +10,7 @@
       <p>@Model.Description</p>
     </div>
     <div class="card-body">
-      <span class="card-text">$ @Model.Payment / @Model.Duration</span>
+      <span class="card-text">$ @Model.Payment / @Model.Duration hours</span>
       <a asp-page="UserProfile" asp-route-userId="@Model.UserId" class="btn btn-primary btn-sm">Author</a>
       <a asp-page="AdProfile" asp-route-adId="@Model.Id" class="btn btn-primary btn-sm">Details</a>
     </div>

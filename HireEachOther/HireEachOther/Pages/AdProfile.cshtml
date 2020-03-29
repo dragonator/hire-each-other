@@ -4,24 +4,95 @@
     ViewData["Title"] = "AdProfile";
 }
 
+<div class="grid-item col-md-12 mb-4">
+    <div class="card">
+        <div class="card-header">
+            <b>
+                @Model.Ad.Title
+            </b>
+        </div>
+        <div class="card-body container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">People&nbsp;&nbsp;&nbsp;</label>
+                        </div>
+                        <label type="text" class="form-control">@Model.Ad.PeopleNeeded</label>
+                    </div>
+                </div>
 
-<div>
-    <partial name="_AdSummary" model="@Model.Ad" />
+                <div class="col-lg-6 col-sm-12">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">Address</label>
+                        </div>
+                        <label type="text" class="form-control">@Model.Ad.Address</label>
+                    </div>
+                </div>
+            </div>
+            <!--Grid row end-->
+            <!--Grid row start-->
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">Duration</label>
+                        </div>
+                        <label type="text" class="form-control">@Model.Ad.Duration</label>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <p class="input-group-text">Date&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                        </div>
+                        <label type="text" class="form-control">@Model.Ad.StartDate</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">Payment</label>
+                        </div>
+                        <label type="text" class="form-control">@(Model.Ad.Payment) lv </label>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text">Type&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        </div>
+                        <label type="text" class="form-control">@Model.Ad.Type</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <span class="card-text">@Model.Ad.Description</span>
+            @*<a asp-page="UserProfile" asp-route-userId="@Model.UserId" class="btn btn-primary btn-sm">Author</a>*@
+        </div>
+        @if ((bool)ViewData["AlreadyApplied"])
+        {
+            <button class="btn btn-primary btn-sm btn-dark btn-block" disabled type="submit">Already applied</button>
+        }
+        else if (!(bool)ViewData["UserOwnsTheAd"])
+        {
+            <form asp-page-handler="Apply" asp-route-adId="@Model.Ad.Id" method="post">
+                <button class="btn btn-primary btn-sm btn-block" type="submit">Apply</button>
+            </form>
+        }
+    </div>
 </div>
-@if (!(bool)ViewData["AlreadyApplied"])
-{
-    <form asp-page-handler="Apply" asp-route-adId="@Model.Ad.Id" method="post">
-        <button class="btn btn-info btn-block my-4" type="submit">Apply</button>
-    </form>
-}
-else
-{
-    <a class="btn btn-secondary btn-lg disabled" role="button" href="#" aria-disabled="true">
-        <span>
-            Apply
-        </span>
-    </a>
-}
+
+
+
 
 
 @if (Model.Ad.Comments.Count != 0)
@@ -31,19 +102,19 @@ else
         <partial name="_AdCommentSummary" model="comment" />
     }
 }
+
 <form method="post">
     <input asp-for="Comment.TargetId" class="form-control mb-4" value="@Model.Ad.Id" type="hidden">
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
+    <div class="grid-item col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
                 <label asp-for="Comment.Comment"></label>
-                <textarea asp-for="Comment.Comment" class="form-control mb-4"></textarea>
-                <span asp-validation-for="Comment.Comment" class="text-danger"></span>
             </div>
+
+            <textarea class="card-body form-control" asp-for="Comment.Comment"></textarea>
+            <span asp-validation-for="Comment.Comment" class="text-danger"></span>
+            <button class="btn btn-primary btn-sm" style="margin:0px" type="submit">Submit</button>
         </div>
-    </div>
-    <div class="row">
-        <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
     </div>
 </form>
 

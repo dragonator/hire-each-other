@@ -8,36 +8,43 @@
 
 @if (Model.AdsToDisplay.Count == 0)
 {
-    <div class="badge-info">
-        <h3>No ads currently created</h3>
-    </div>
+    <center>
+        <div class="alert alert-light" role="alert">
+            No open ads currently =(
+            <div>
+                Come back later
+            </div>
+        </div>
+    </center>
 }
 else
 {
 
     <div class="container">
-      <div class="grid">
-        <div class="grid-sizer col-md-3"></div>
-        @foreach (var ad in Model.AdsToDisplay)
-        {
-            <partial name="_AdSummary" model="ad" />
-        }
-      </div>
+        <div class="grid">
+            <div class="grid-sizer col-md-3"></div>
+            @foreach (var ad in Model.AdsToDisplay)
+            {
+                <partial name="_AdSummary" model="ad" />
+            }
+        </div>
     </div>
+
+    <center>
+        <div>
+            <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="false" asp-route-PageIndex="@Model.PageIndex"> &lt </a>
+            <span class="quantity">@Model.PageIndex</span>
+            <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="true" asp-route-PageIndex="@Model.PageIndex"> &gt </a>
+        </div>
+    </center>
 }
 
-<center>
-  <div>
-    <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="false" asp-route-PageIndex="@Model.PageIndex"> < </a>
-    <span class="quantity">@Model.PageIndex</span>
-    <a class="btn btn-primary" asp-page="ListAds" asp-route-isNext="true" asp-route-PageIndex="@Model.PageIndex"> > </a>
-  </div>
-</center>
+
 
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.grid').masonry({
                 itemSelector: '.grid-item',
                 columnWidth: '.grid-sizer',

@@ -31,7 +31,7 @@ namespace HireEachOther.Services
             var result = _dbContext.UserComments
                             .Where(uc => uc.TargetId == userId)
                             .Include(uc => uc.Owner)
-                            .OrderBy(uc => uc.DateAdded)
+                            .OrderByDescending(uc => uc.DateAdded)
                             .ToList();
             return result;
         }

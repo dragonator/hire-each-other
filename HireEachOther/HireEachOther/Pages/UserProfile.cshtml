@@ -4,40 +4,79 @@
     ViewData["Title"] = "UserProfile";
 }
 
-  
-<h1>@Model.SelectedUser.UserName</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-10">
+            <div class="business-card">
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object img-circle profile-img" src="http://s3.amazonaws.com/37assets/svn/765-default-avatar.png">
+                    </div>
+                    <div class="media-body" style="padding:10px">
+                        <h2 class="media-heading">@Model.UserFullName</h2>
+                        <div class="mail"><a href="mailto:@Model.SelectedUser.Email">@Model.SelectedUser.Email</a> </div>
+                        <div class="job">Rating: @Model.SelectedUser.Rating</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-<div>
-    @Model.SelectedUser.Rating
-</div>
-<div>
-    <h3>Bio, info, family, dogs, hair counts...</h3>
-</div>
 
 @if (Model.SelectedUser.Comments.Count != 0)
 {
 
-        @foreach (var comment in Model.SelectedUser.Comments)
-        {
-            <partial name="_UserCommentSummary" model="comment" />
-        }
- 
+    @foreach (var comment in Model.SelectedUser.Comments)
+    {
+        <partial name="_UserCommentSummary" model="comment" />
+    }
+
 }
 <form method="post">
     <input asp-for="Comment.TargetId" class="form-control mb-4" value="@Model.SelectedUser.Id" type="hidden">
-    <div class="row">
-        <div class="col">
-            <div class="form-group">
+    <div class="grid-item col-md-6 mb-4">
+        <div class="card">
+            <div class="card-header">
                 <label asp-for="Comment.Comment"></label>
-                <textarea asp-for="Comment.Comment" class="form-control mb-4"></textarea>
-                <span asp-validation-for="Comment.Comment" class="text-danger"></span>
             </div>
+
+            <textarea class="card-body form-control" asp-for="Comment.Comment"></textarea>
+            <span asp-validation-for="Comment.Comment" class="text-danger"></span>
+            <button class="btn btn-primary btn-sm" style="margin:0px" type="submit">Submit</button>
         </div>
     </div>
-    <div class="row">
-        <button class="btn btn-info btn-block my-4" type="submit">Submit</button>
-    </div>
 </form>
+
+
+@section Scripts {
+
+    <style>
+        /*Business Card Css */
+        .business-card {
+            border: 1px solid #cccccc;
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .profile-img {
+            height: 120px;
+            background: white;
+        }
+
+        .job {
+            color: #666666;
+            font-size: 17px;
+        }
+
+        .mail {
+            font-size: 16px;
+        }
+    </style>
+
+}
 
 
 

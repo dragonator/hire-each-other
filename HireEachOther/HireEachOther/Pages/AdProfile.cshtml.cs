@@ -42,11 +42,12 @@ namespace HireEachOther.Pages
         {
             var AdId = Guid.Parse(adId);
             Ad = _adsService.GetAdById(AdId);
-            Ad.Comments = Ad.Comments.OrderBy(a => a.DateAdded).ToList();
+            Ad.Comments = Ad.Comments.OrderByDescending(a => a.DateAdded).ToList();
             var identityClaim = _httpContext.HttpContext.User;
             var user = _userService.GetUserAsync(identityClaim).Result;
             ViewData["AlreadyApplied"] = _dbContext.Applicants
-                .Any(ap => ap.UserId == user.Id && ap.AdId == AdId) || Ad.Owner.Id == user.Id;
+                .Any(ap => ap.UserId == user.Id && ap.AdId == AdId);
+            ViewData["UserOwnsTheAd"] = Ad.Owner.Id == user.Id;
         }
 
         public IActionResult OnPost()

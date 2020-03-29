@@ -21,7 +21,6 @@
             </div>
         </div>
         <!--Grid row end-->
-
         <!--Grid row start-->
         <div class="row">
             <div class="col">
@@ -41,7 +40,6 @@
             </div>
         </div>
         <!--Grid row end-->
-
         <!--Grid row start-->
         <div class="row">
             <div class="col">
@@ -61,12 +59,11 @@
             </div>
         </div>
         <!--Grid row end-->
-
         <!--Grid row start-->
         <div class="row">
             <div class="col">
                 <div class="form-group">
-                    <label asp-for="Ad.Payment">Payment</label>
+                    <label asp-for="Ad.Payment">Payment (leva)</label>
                     <input asp-for="Ad.Payment" class="form-control mb-4">
                     <span asp-validation-for="Ad.Payment" class="text-danger"></span>
                 </div>
@@ -81,7 +78,6 @@
             </div>
         </div>
         <!--Grid row end-->
-
         <!--Grid row start-->
         <div class="row">
             <div class="col">
@@ -93,21 +89,16 @@
             </div>
         </div>
         <!--Grid row end-->
-
         <!--Grid row start-->
         <div class="row">
-            <button class="btn btn-info btn-block my-4" type="submit">Create</button>
+            <div class="col">
+                <center>
+                    <button class="btn btn-primary btn-sm" type="submit">Create</button>
+                </center>
+            </div>
+
         </div>
         <!--Grid row end-->
     </form>
 </div>
 
-<!--
-@section Scripts {
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#date').pickadate()
-        });
-    </script>
-}
--->

@@ -5,30 +5,37 @@
 }
 
 <center><h1>My ads</h1></center>
+<center style="margin:10px">
+    <a asp-page="CreateAds" class="btn btn-primary btn-sm">Create new</a>
+</center>
 
 @if (Model.AdsCollection.Count == 0)
 {
-    <div class="badge-info">
-        <h3>Currently you have no ads</h3>
-    </div>
+
+    <center>
+        <div class="alert alert-light" role="alert">
+            Currently you have no ads
+        </div>
+    </center>
 }
 else
 {
     <div class="container">
-      <div class="grid">
-        <div class="grid-sizer col-md-3"></div>
-        @foreach (var ad in Model.AdsCollection)
-        {
-            <partial name="_AdSummary" model="ad" />
-        }
-      </div>
+        <div class="grid">
+            <div class="grid-sizer col-md-3"></div>
+            @foreach (var ad in Model.AdsCollection)
+            {
+                <partial name="_AdSummary" model="ad" />
+            }
+        </div>
     </div>
 }
+
 
 @section Scripts {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/3.3.2/masonry.pkgd.js"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.grid').masonry({
                 itemSelector: '.grid-item',
                 columnWidth: '.grid-sizer',
