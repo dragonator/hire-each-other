@@ -26,7 +26,7 @@
             <div class="col">
                 <div class="form-group">
                     <label asp-for="Ad.PeopleNeeded">Number of people</label>
-                    <input asp-for="Ad.PeopleNeeded" class="form-control mb-4">
+                    <input asp-for="Ad.PeopleNeeded" class="form-control mb-4" value="">
                     <span asp-validation-for="Ad.PeopleNeeded" class="text-danger"></span>
                 </div>
             </div>
@@ -45,7 +45,7 @@
             <div class="col">
                 <div class="form-group">
                     <label asp-for="Ad.Duration">Duration (hours)</label>
-                    <input asp-for="Ad.Duration" class="form-control mb-4">
+                    <input asp-for="Ad.Duration" class="form-control mb-4" value="">
                     <span asp-validation-for="Ad.Duration" class="text-danger"></span>
                 </div>
             </div>
@@ -63,8 +63,9 @@
         <div class="row">
             <div class="col">
                 <div class="form-group">
+
                     <label asp-for="Ad.Payment">Payment (leva)</label>
-                    <input asp-for="Ad.Payment" class="form-control mb-4">
+                    <input asp-for="Ad.Payment" class="form-control mb-4" value="">
                     <span asp-validation-for="Ad.Payment" class="text-danger"></span>
                 </div>
             </div>
@@ -83,7 +84,7 @@
             <div class="col">
                 <div class="form-group">
                     <label asp-for="Ad.Description">Description</label>
-                    <textarea asp-for="Ad.Description" class="form-control mb-4"></textarea>
+                    <textarea asp-for="Ad.Description" class="form-control mb-4" rows="5"></textarea>
                     <span asp-validation-for="Ad.Description" class="text-danger"></span>
                 </div>
             </div>
